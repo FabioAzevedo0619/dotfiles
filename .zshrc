@@ -23,8 +23,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # If set to an empty array, this variable will have no effect.
 ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-export JAVA_HOME=$(/usr/libexec/java_home -v 11.0.18)
-
 # ----------------------------------- MISC -----------------------------------
 export VISUAL=vim
 export EDITOR=$VISUAL
@@ -82,15 +80,15 @@ POWERLEVEL9K_TIME_FOREGROUND=white
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator ssh dir dir_writable vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time background_jobs time)
 
-eval $(thefuck --alias)
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export KUBECONFIG=~/Downloads/kubeconf.txt
+export AWS_PROFILE=funf2-non-prod-userfull
+export AWS_REGION=`aws configure get region`
+
+eval $(thefuck --alias)
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-# bun completions
-[ -s "/Users/ctw02371/.bun/_bun" ] && source "/Users/ctw02371/.bun/_bun"
-export PATH="/opt/homebrew/opt/ruby@3.0/bin:$PATH"

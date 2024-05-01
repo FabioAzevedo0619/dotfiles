@@ -1,6 +1,10 @@
 [font]
 size = 25
 
+[cursor.style]
+shape    = "Beam"
+blinking = "Always"
+
 [font.normal]
 family = "UbuntuMono Nerd Font"
 
