@@ -40,9 +40,6 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 export LESSHISTFILE=-
 
-# colorize ls
-[ -x /usr/bin/dircolors ] && eval "$(dircolors -b)"
-
 plugins=(
     git aliases
 )
@@ -83,8 +80,9 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time background_job
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# source from file
-# allows extended syntax such as comments and variable expansion
+# =========================
+# environment var overrides
+# =========================
 if [[ -f ~/globals.env ]] && [[ -s ~/globals.env ]]; then
   set -a
   source <((cat ~/globals.env | sed -e '/^#/d;/^\s*$/d' -e "s/'/'\\\''/g" -e "s/=\(.*\)/='\1'/g") | envsubst)
@@ -92,6 +90,7 @@ if [[ -f ~/globals.env ]] && [[ -s ~/globals.env ]]; then
 fi
 
 eval $(thefuck --alias)
+eval "$(dircolors ~/.dircolors)"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
