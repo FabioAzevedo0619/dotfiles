@@ -44,7 +44,7 @@ export LESSHISTFILE=-
 [ -x /usr/bin/dircolors ] && eval "$(dircolors -b)"
 
 plugins=(
-    git
+    git aliases
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -83,9 +83,13 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time background_job
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export KUBECONFIG=~/Downloads/kubeconf.txt
-export AWS_PROFILE=funf2-non-prod-userfull
-export AWS_REGION=`aws configure get region`
+# source from file
+# allows extended syntax such as comments and variable expansion
+if [[ -f ~/globals.env ]] && [[ -s ~/globals.env ]]; then
+  set -a
+  source <((cat ~/globals.env | sed -e '/^#/d;/^\s*$/d' -e "s/'/'\\\''/g" -e "s/=\(.*\)/='\1'/g") | envsubst)
+  set +a
+fi
 
 eval $(thefuck --alias)
 
