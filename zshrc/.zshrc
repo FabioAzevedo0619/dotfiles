@@ -91,6 +91,11 @@ fi
 
 eval $(thefuck --alias)
 
+# Alias
+alias cat='bat --paging=never'
+alias dotfiles='cd ~/Dotfiles'
+alias funf2='cd ~/Development/funf2/funf2'
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
