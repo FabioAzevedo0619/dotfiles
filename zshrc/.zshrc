@@ -95,7 +95,16 @@ eval $(thefuck --alias)
 alias cat='bat --paging=never'
 alias dotfiles='cd ~/Dotfiles'
 alias funf2='cd ~/Development/funf2/funf2'
+alias funf2-dev='export AWS_PROFILE=funf2-non-prod-userfull; export KUBECONFIG=$HOME/.kube/funf2-dev; echo "Using context for funf2-dev"'
+alias pure-prod='export AWS_PROFILE=pure-prod-userfull; export KUBECONFIG=$HOME/.kube/pure-prod; echo "Using context for pure-prod"'
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# bun completions
+[ -s "/Users/ctw02371/.bun/_bun" ] && source "/Users/ctw02371/.bun/_bun"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
